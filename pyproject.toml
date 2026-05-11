@@ -1,0 +1,34 @@
+[project]
+name = "resume_tailor"
+version = "0.1.0"
+description = "Automated resume tailoring with CrewAI (PRD-aligned)"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.13"
+dependencies = [
+    "crewai>=0.108.0,<1.0.0",
+    "json-repair>=0.25.0",
+    "python-dotenv>=1.0.0",
+    "python-docx>=1.1.0",
+    "pymupdf>=1.24.0",
+    "pdfminer.six>=20231228",
+    "reportlab>=4.2.0",
+    "pydantic>=2.0.0",
+]
+
+[project.scripts]
+resume_tailor = "resume_tailor.main:run"
+run_crew = "resume_tailor.main:run"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
+
+# Cap onnxruntime (Chroma transitive). v1.20+ macOS wheels target macosx_13_0 only; stay on 1.19.x for
+# macOS 12 (Intel or Apple) with cp312. Still under 1.21 per policy.
+[tool.uv]
+override-dependencies = [
+    "onnxruntime>=1.15.0,<1.20",
+]

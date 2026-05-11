@@ -1,0 +1,73 @@
+Tayyab Hussain
+Senior Software Engineer - 8+ Years | React.js | Node.js | Next.js | AWS
+Fall River, MA 02724 • tayyabhussainhere@gmail.com • (508) 371-2499 https://www.linkedin.com/in/tayyabhussainhere/
+PROFESSIONAL SUMMARY
+Senior Software Engineer with 8+ years of experience designing and building scalable web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js). Demonstrated expertise in optimizing backend performance, crafting modern and responsive user interfaces, and leading technical initiatives within Agile environments. Passionate about delivering user-centric solutions and used cloud platforms such as AWS and GCP to drive efficiency and innovation. Proven ability to collaborate effectively with cross-functional teams to deliver high-impact products in fast-paced settings.
+PROFESSIONAL EXPERIENCE Senior Full Stack Developer
+Walmart Sep 2023 – Apr 2026
+● Led the design and development of scalable SaaS platforms using React.js, Node.js, and Python for enterprise clients.
+● Built a robust Textile Management System with React.js and Python (Django), streamlining inventory, order workflows, and supply chain operations.
+● Developed a real-time messaging system using Node.js, Socket.io, and Python for backend services, improving communication performance across services.
+● Architected and implemented RESTful APIs with Node.js and Python (Flask/Django) for seamless third-party integrations and data exchange.
+● Designed microservices-based architecture deployed on Kubernetes, ensuring high availability and scalability with a combination of Node.js and Python.
+● Optimized MongoDB performance through indexing, query tuning, and Python-based ETL processes, significantly improving response times.
+● Implemented secure authentication and authorization using OAuth 2.0 and JWT, used Python-based encryption libraries for enhanced security.
+● Automated CI/CD pipelines using Jenkins, reducing deployment time and improving release reliability with a mix of Node.js and Python scripts.
+● Used AWS services (EC2, S3, Lambda, CloudWatch) to enhance system performance and monitoring, integrating Python for AWS Lambda functions.
+● Applied TypeScript across frontend and backend to improve code quality and maintainability, while utilizing Python for data processing tasks.
+● Implemented infrastructure as code using AWS CloudFormation and Python (Boto3) for managing AWS resources and environments.
+● Integrated RESTful APIs for seamless communication between frontend (React.js) and backend systems (Node.js and Python).
+● Implemented real-time data streaming using WebSockets and Python-based backend services, enabling live updates for trading activities.
+● Optimized MongoDB queries and indexing strategies with Python-based optimization scripts to
+    
+ improve database performance.
+● Applied Redux-Saga/Thunk for efficient state management, integrating Python-based microservices
+into the application architecture.
+● Developed reusable React components and modular architecture to improve maintainability, with
+Python used for backend processing.
+● Automated testing using Jest and Python’s pytest, ensuring high-quality code through consistent unit
+and integration testing practices.
+● Collaborated with cross-functional teams in Agile environments, participating in sprint planning, code
+reviews, and deployments.
+Tech Used: React.js, Node.js, Python, Express.js, MongoDB, JavaScript, TypeScript, AWS (EC2, Lambda, S3, RDS, CloudWatch), API Integration, Jenkins, Docker, Kubernetes, PayPal, Stripe, TailwindCSS.
+Software Engineer
+ELEKS Aug 2020 – Aug 2023
+● Developed and maintained scalable web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js), with Python-based backend services for enhanced processing.
+● Built responsive and dynamic user interfaces using React.js, Next.js, and TailwindCSS, improving overall user experience.
+● Designed and implemented RESTful APIs with Node.js, Express.js, and Python (Flask/Django) for seamless frontend-backend communication.
+● Delivered a HIPAA-compliant healthcare platform using React.js and Python (Django), enabling users to manage appointments and access services securely.
+● Developed a retail inventory management system with real-time updates for stock, orders, and logistics, with Python services for real-time data processing.
+● Integrated third-party services such as Stripe for payments, and Twilio/SendGrid for communication features, with Python handling payment and messaging logic.
+● Implemented real-time features using WebSockets and Python-based services to handle communication and live notifications.
+● Optimized application performance using Redis caching and MongoDB query tuning, along with Python for complex data manipulations and processing.
+● Built secure authentication and authorization systems using OAuth 2.0, JWT, and Python-based security tools.
+● Used AWS services (Lambda, EC2, S3, CloudWatch) to deploy and manage scalable applications, utilizing Python for Lambda functions and S3 processing.
+● Containerized applications using Docker and supported deployments with Kubernetes, using Python scripts to automate container management.
+● Set up CI/CD pipelines using Jenkins to automate testing and deployment processes, incorporating Python-based automation scripts.
+● Collaborated closely with product managers and designers in Agile teams to deliver high-quality features on time.
+● Developed reusable and modular React components to enhance scalability, with Python used for backend data management and processing.
+● Implemented state management using Redux (Thunk/Saga) for handling complex application workflows, integrating Python backend services for processing.
+● Designed and integrated GraphQL APIs alongside REST, with Python handling data fetching logic to
+
+improve frontend performance.
+Tech Used: React.js, Python, Next.js, Node.js, Express.js, MongoDB Atlas, JavaScript, TypeScript, AWS (Lambda, EC2, S3, CloudFormation), API Integration, Jenkins, Stripe, Twilio, SendGrid, Docker, Kubernetes, TailwindCSS.
+Software Engineer
+SoluLab Dec 2017 – July 2020
+● Developed and maintained scalable web applications using the MERN stack (MongoDB, Express.js, React.js, Node.js) with Python for backend services.
+● Built a high-performance trading platform with React.js and Redux, enabling real-time data visualization, with Python (Django/Flask) for backend processing and trading logic.
+● Designed and implemented RESTful APIs using Node.js, Express.js, and Python (Flask/Django) for secure and efficient transaction processing.
+● Integrated Redis caching to optimize data retrieval, using Python-based processing for real-time data handling.
+● Developed responsive and user-friendly interfaces using HTML5, CSS3, and Bootstrap, with Python supporting backend data management.
+● Used AWS services (Lambda, API Gateway, SQS, EC2, S3) to deploy and scale applications in a distributed environment, integrating Python-based services with AWS.
+● Containerized applications using Docker, improving deployment consistency and scalability, with Python for backend containerization.
+● Implemented secure authentication and data handling practices to ensure compliance with financial standards, using Python-based encryption libraries.
+Tech Used: React, Node.js, Python Redux, Redis, AWS (Lambda, SQS, SNS, API Gateway, ECS, DynamoDB, EC2), Docker, GCP, Python, Django, RESTful APIs, Stripe, Datadog, Sentry, TypeScript, JavaScript.
+TECHNICAL SKILLS
+Frontend | React.js, Next.js, Redux, Redux-Thunk, Redux-Saga, React MUI, Bootstrap, Gatsby,
+JavaScript, TypeScript, TailwindCSS, Vue.js, Angular, CSS3, HTML5, SASS/SCSS, Styled .
+Backend | Python, Node.js, Express.js, Nest.js, Microservices Architecture, RESTful APIs,
+Django, Flask, FastAPI, Java (Spring Boot), Golang, WebSockets, gRPC, Kafka, RabbitMQ, Redis, Docker, Kubernetes.
+DBs & DevOps | NoSQL, MongoDB, DynamoDB, MySQL, PostgreSQL, AWS (EC2, Lambda, S3, RDS, SQS, SNS, CloudFormation, CloudWatch, Secrets Manager), GCP (BigQuery), Microsoft Azure (Azure DevOps, Azure Functions, Azure Blob Storage), Docker.
+EDUCATION
+University of Engineering and Technology
+Bachelor of Science, Computer Science 2012 – 2016

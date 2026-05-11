@@ -1,0 +1,10 @@
+.env
+__pycache__/
+.DS_Store
+output/*.docx
+output/*.pdf
+output/*.md
+output/*.json
+output/*.txt
+!output/.gitkeep
+memory/

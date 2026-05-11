@@ -1,0 +1,180 @@
+HugeInc Logo
+Back to jobs
+New
+Technology Lead
+United States
+Location: This position is remote within the United States.
+
+Technology Lead
+
+About Technology
+
+At Huge, technology is not only about depth of expertise, but also about continuous exploration of how technology can create meaningful experiences. Our technologists collaborate closely with strategy, design, and product teams to bring ideas to life. They don’t just build features , they build impactful solutions that address complex client challenges and deliver exceptional digital experiences.
+
+Technology Leads at Huge combine strong engineering fundamentals, leadership, and collaboration to guide teams through complex enterprise implementations while ensuring high-quality, scalable solutions.
+
+Job Description
+
+Huge is looking for a Technology Lead with a strong UI and front-end focus to support the development of a digital platform, primarily built on Adobe Experience Manager (AEM). This role requires a technologist who can lead front-end architecture and implementation, while maintaining an understanding of the full-stack ecosystem in enterprise web environments.
+
+The ideal candidate will have deep experience building high-fidelity web interfaces, strong knowledge of modern web development practices, and experience working with enterprise content management platforms. As a Technology Lead, you will collaborate with designers, strategists, and developers to deliver scalable and production-ready solutions.
+
+What You’ll Be Doing
+
+Lead the development and implementation of high-quality UI components and front-end architectures.
+Implement high-fidelity front-end designs, ensuring pixel accuracy and performance across devices and browsers.
+Guide the development team in best practices for web development, architecture, and code quality.
+Work across the full web stack, collaborating with backend teams and integrating front-end solutions with enterprise platforms.
+Contribute to the implementation and integration of Adobe Experience Manager (AEM) solutions.
+Apply modern front-end development practices, including modular architecture and build tooling.
+Lead and participate in code reviews, ensuring maintainable, scalable, and performant code.
+Collaborate with UX designers, product teams, and engineers to deliver seamless digital experiences.
+Identify technical risks, architectural gaps, and potential improvements early in the development process.
+Support the team in delivering production-ready web applications and digital platforms.
+Mentor engineers and provide technical guidance to ensure consistent engineering quality across the team.
+What We’d Like to See
+
+5+ years of experience in web development, including experience in senior engineer or technical lead roles.
+Strong expertise in front-end web development, including:
+HTML5
+CSS3
+JavaScript
+Experience with modern front-end build tools, especially Webpack.
+Experience delivering web platforms that have successfully launched to production.
+Experience working with Enterprise Content Management or Experience Management platforms.
+Adobe Experience Manager (AEM) experience is highly desirable.
+Experience with Java or familiarity with Java-based platforms.
+Familiarity with modern front-end frameworks, particularly React.
+Experience with TypeScript is a plus.
+Experience with Sass / SCSS or other CSS preprocessors.
+Understanding of full-stack web architecture and integration patterns.
+Experience working in enterprise or agency environments is a plus.
+This role is currently not available for hire or work in Colorado, New Mexico, and Hawaii.
+
+About Huge
+
+Huge is a design and technology company. We create products and experiences that grow the world’s most ambitious brands. We do this by designing experiences for people, not users, and uncovering new sources of growth by leveraging our creative talent, our proprietary platform LIVE and unlocking the advantages brought to us by emerging technologies. We believe all experiences should be intelligent, shoppable and unique to every brand.
+
+Huge’s nearly 1,000 thinkers, tinkerers, makers and creators, have been problem-solving across North America, Europe, and Latin America for over 25 years. Interested? You’ll find more information at www.hugeinc.com. 
+
+Huge is committed to creating an inclusive employee experience for all. Regardless of race, gender, religion, sexual orientation, age, disability, or if you’re parenting the next generation of innovators, we firmly believe that our work is at its best when everyone feels free to be their most authentic self.
+
+Huge is an equal opportunity employer (EOE). We strongly support diversity in the workforce. We are committed to an inclusive, barrier-free recruitment and selection process and work environment. If you are contacted for a job opportunity, please advise us of any accommodation needed to ensure you have access to a fair and equitable process. Any information received relating to accommodation will be addressed confidentially.
+
+Workers shall not be required to pay employers’ or agents’ recruitment fees or other related fees for their employment. If any such fees are found to have been paid by workers, such fees shall be repaid to the worker.
+
+
+#LI-POST #LI-Remote
+
+The salary range for this position is as listed below. Exactly where a prospective employee will be paid within this range will depend on, among other factors, the actual salary ranges for current and former employees who are either currently filling a similar role or did in the past; the candidate’s depth of experience and qualifications; the level of specialization the role requires; budgetary considerations; the market demand for that role and the local market conditions that exist where the employee will be based. For current Huge employees, tenure will also be a consideration.
+Wage Disclosure
+
+$160 - $170 USD
+
+Create a Job Alert
+
+Interested in building your career at HugeInc? Get future opportunities sent straight to your email.
+
+Create alert
+Apply for this job
+*
+
+indicates a required field
+
+First Name*
+Last Name*
+Email*
+Phone
+Country*
+
+Phone*
+Location (City)*
+Locate me
+Resume/CV*
+AttachNo file chosen
+Enter manually
+Accepted file types: pdf, doc, docx, txt, rtf
+
+Current Company*
+LinkedIn Profile
+Website
+Are you authorized to work in the United States for any employer? *
+Select...
+
+Do you now, or will you in the future, require employment immigration support to continue working legally for our company in the United States?*
+Select...
+
+I certify that all statements and information provided in this application are true, complete, and correct to the best of my knowledge and belief. Furthermore, I understand and agree that any falsification, misrepresentation, or omission of facts on this application (or any other employment-related document) will be cause for immediate denial of employment or termination, regardless of when the omission or misrepresentation is discovered.*
+Select...
+
+Privacy Notice. *
+Select...
+
+Before submitting this application you must agree to Huge's Privacy Notice, Terms of Use, and California Privacy Notice (as applicable).
+
+Voluntary Self-Identification
+For government reporting purposes, we ask candidates to respond to the below self-identification survey. Completion of the form is entirely voluntary. Whatever your decision, it will not be considered in the hiring process or thereafter. Any information that you do provide will be recorded and maintained in a confidential file.
+
+As set forth in HugeInc’s Equal Employment Opportunity policy, we do not discriminate on the basis of any protected group status under any applicable law.
+
+Gender
+Select...
+
+Are you Hispanic/Latino?
+Select...
+
+Race & Ethnicity Definitions
+If you believe you belong to any of the categories of protected veterans listed below, please indicate by making the appropriate selection. As a government contractor subject to the Vietnam Era Veterans Readjustment Assistance Act (VEVRAA), we request this information in order to measure the effectiveness of the outreach and positive recruitment efforts we undertake pursuant to VEVRAA. Classification of protected categories is as follows:
+
+A "disabled veteran" is one of the following: a veteran of the U.S. military, ground, naval or air service who is entitled to compensation (or who but for the receipt of military retired pay would be entitled to compensation) under laws administered by the Secretary of Veterans Affairs; or a person who was discharged or released from active duty because of a service-connected disability.
+
+A "recently separated veteran" means any veteran during the three-year period beginning on the date of such veteran's discharge or release from active duty in the U.S. military, ground, naval, or air service.
+
+An "active duty wartime or campaign badge veteran" means a veteran who served on active duty in the U.S. military, ground, naval or air service during a war, or in a campaign or expedition for which a campaign badge has been authorized under the laws administered by the Department of Defense.
+
+An "Armed forces service medal veteran" means a veteran who, while serving on active duty in the U.S. military, ground, naval or air service, participated in a United States military operation for which an Armed Forces service medal was awarded pursuant to Executive Order 12985.
+
+Veteran Status
+Select...
+
+Voluntary Self-Identification of Disability
+Form CC-305
+Page 1 of 1
+OMB Control Number 1250-0005
+Expires 04/30/2026
+
+Why are you being asked to complete this form?
+We are a federal contractor or subcontractor. The law requires us to provide equal employment opportunity to qualified people with disabilities. We have a goal of having at least 7% of our workers as people with disabilities. The law says we must measure our progress towards this goal. To do this, we must ask applicants and employees if they have a disability or have ever had one. People can become disabled, so we need to ask this question at least every five years.
+
+Completing this form is voluntary, and we hope that you will choose to do so. Your answer is confidential. No one who makes hiring decisions will see it. Your decision to complete the form and your answer will not harm you in any way. If you want to learn more about the law or this form, visit the U.S. Department of Labor’s Office of Federal Contract Compliance Programs (OFCCP) website at www.dol.gov/ofccp.
+
+How do you know if you have a disability?
+A disability is a condition that substantially limits one or more of your “major life activities.” If you have or have ever had such a condition, you are a person with a disability. Disabilities include, but are not limited to:
+
+Alcohol or other substance use disorder (not currently using drugs illegally)
+Autoimmune disorder, for example, lupus, fibromyalgia, rheumatoid arthritis, HIV/AIDS
+Blind or low vision
+Cancer (past or present)
+Cardiovascular or heart disease
+Celiac disease
+Cerebral palsy
+Deaf or serious difficulty hearing
+Diabetes
+Disfigurement, for example, disfigurement caused by burns, wounds, accidents, or congenital disorders
+Epilepsy or other seizure disorder
+Gastrointestinal disorders, for example, Crohn's Disease, irritable bowel syndrome
+Intellectual or developmental disability
+Mental health conditions, for example, depression, bipolar disorder, anxiety disorder, schizophrenia, PTSD
+Missing limbs or partially missing limbs
+Mobility impairment, benefiting from the use of a wheelchair, scooter, walker, leg brace(s) and/or other supports
+Nervous system condition, for example, migraine headaches, Parkinson’s disease, multiple sclerosis (MS)
+Neurodivergence, for example, attention-deficit/hyperactivity disorder (ADHD), autism spectrum disorder, dyslexia, dyspraxia, other learning disabilities
+Partial or complete paralysis (any cause)
+Pulmonary or respiratory conditions, for example, tuberculosis, asthma, emphysema
+Short stature (dwarfism)
+Traumatic brain injury
+Disability Status
+Select...
+
+PUBLIC BURDEN STATEMENT: According to the Paperwork Reduction Act of 1995 no persons are required to respond to a collection of information unless such collection displays a valid OMB control number. This survey should take about 5 minutes to complete.
+

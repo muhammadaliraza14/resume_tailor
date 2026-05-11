@@ -1,0 +1,47 @@
+parse_resume_task:
+  description: >
+    Read the candidate resume text from "{resume_text_path}" using read_text_file.
+    The visual layout of the final PDF matches "{template_pdf_path}" (reference only); your job is to
+    fill StructuredResumeContent so sections align: full_name, headline, contact_line, linkedin_url,
+    professional_summary, experience (list of roles with title, company, date_range, bullets, tech_used),
+    technical_skills_frontend, technical_skills_backend, technical_skills_devops, education.
+  expected_output: >
+    StructuredResumeContent pydantic object.
+  agent: resume_parsing_agent
+  output_file: output/resume_parsed.json
+
+parse_job_description_task:
+  description: >
+    Read "{job_description_text_path}" with read_text_file. Produce JobDescriptionStructure.
+  expected_output: >
+    Structured job description fields.
+  agent: job_description_parsing_agent
+  output_file: output/job_description_parsed.json
+
+tailor_resume_task:
+  description: >
+    Using context from resume parsing and JD parsing, produce an updated StructuredResumeContent tailored
+    to the job. Keep all facts truthful; rephrase for relevance and keywords.
+    Call write_tailored_resume_files with output_dir "{output_dir}" and tailored_resume_json set to
+    the full JSON object (all StructuredResumeContent fields). Use \\n inside strings instead of raw newlines.
+  expected_output: >
+    Confirmation of paths to tailored_resume.pdf and tailored_resume.txt from the tool.
+  agent: tailoring_agent
+  context:
+    - parse_resume_task
+    - parse_job_description_task
+  output_file: output/tailoring_summary.md
+
+evaluate_resume_task:
+  description: >
+    Evaluate output in "{output_dir}". Call read_tailored_resume_text with "{output_dir}".
+    Call read_text_file on "{job_description_text_path}" for raw JD text, then compute_keyword_similarity
+    between tailored resume text and JD text. Return ResumeEvaluation with score_1_to_10, keyword_alignment,
+    content_alignment, cosine_similarity_note (numeric similarity), and suggestions if score < 8.
+  expected_output: >
+    Structured evaluation.
+  agent: evaluator_agent
+  context:
+    - tailor_resume_task
+    - parse_job_description_task
+  output_file: output/evaluation.md
