@@ -10,21 +10,20 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 from resume_tailor.crew import ResumeTailorCrew
+from resume_tailor.paths import project_root as _project_root
 
 warnings.filterwarnings("ignore", category=SyntaxWarning, module="pysbd")
 
 
-def _project_root() -> Path:
-    return Path(__file__).resolve().parent.parent.parent
-
-
-def run(
+def kickoff_crew(
     resume_text_path: str | None = None,
     job_description_text_path: str | None = None,
     template_pdf_path: str | None = None,
     output_dir: str | None = None,
-) -> None:
-
+):
+    """
+    Load env, chdir to project root, build inputs, run the crew. Returns the CrewAI kickoff result.
+    """
     root = _project_root()
     load_dotenv(root / ".env")
     load_dotenv()
@@ -50,8 +49,21 @@ def run(
 
     Path(inputs["output_dir"]).mkdir(parents=True, exist_ok=True)
 
-    result = ResumeTailorCrew().crew().kickoff(inputs=inputs)
+    return ResumeTailorCrew().crew().kickoff(inputs=inputs)
 
+
+def run(
+    resume_text_path: str | None = None,
+    job_description_text_path: str | None = None,
+    template_pdf_path: str | None = None,
+    output_dir: str | None = None,
+) -> None:
+    result = kickoff_crew(
+        resume_text_path=resume_text_path,
+        job_description_text_path=job_description_text_path,
+        template_pdf_path=template_pdf_path,
+        output_dir=output_dir,
+    )
     print("\n\n=== CREW FINISHED ===\n\n")
     print(result.raw)
 

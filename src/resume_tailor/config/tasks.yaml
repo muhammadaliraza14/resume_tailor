@@ -21,7 +21,11 @@ parse_job_description_task:
 tailor_resume_task:
   description: >
     Using context from resume parsing and JD parsing, produce an updated StructuredResumeContent tailored
-    to the job. Keep all facts truthful; rephrase for relevance and keywords.
+    to the job. Keep all facts truthful; rephrase for relevance and keywords. For ATS-friendly content:
+    weave concrete JD phrases into achievement bullets (not only the skills lines), prefer ASCII characters
+    in visible text, keep bullets clear and dated experience ranges explicit, and avoid decorative symbols
+    in bullet text. Note: the pipeline still emits a layout PDF for humans; mention in tailoring_summary
+    if the user should also keep a .doc/.docx plain export for employers that require it.
     Call write_tailored_resume_files with output_dir "{output_dir}" and tailored_resume_json set to
     the full JSON object (all StructuredResumeContent fields). Use \\n inside strings instead of raw newlines.
   expected_output: >
@@ -34,12 +38,23 @@ tailor_resume_task:
 
 evaluate_resume_task:
   description: >
-    Evaluate output in "{output_dir}". Call read_tailored_resume_text with "{output_dir}".
-    Call read_text_file on "{job_description_text_path}" for raw JD text, then compute_keyword_similarity
-    between tailored resume text and JD text. Return ResumeEvaluation with score_1_to_10, keyword_alignment,
-    content_alignment, cosine_similarity_note (numeric similarity), and suggestions if score < 8.
+    Evaluate output in "{output_dir}".
+    1) Call get_ats_guidelines (no arguments) and use it as the rubric for ATS commentary.
+    2) Call read_tailored_resume_text with "{output_dir}" for the tailored plain text.
+    3) Call read_text_file on "{job_description_text_path}" for raw JD text.
+    4) Call compute_keyword_similarity with tailored resume text and JD text; put the numeric value in cosine_similarity_note.
+    5) Call compute_ats_resume_metrics with the same two texts; summarize key numbers in ats_metrics_interpretation.
+    6) Set ats_readiness_score_0_to_100 (0–100) by combining: JD token match rate and cosine similarity from the tools,
+    ASCII cleanliness, presence of date-like tokens, reasonable bullet structure, and how well the resume follows
+    get_ats_guidelines (keywords in context, simple linear text, etc.). This is a heuristic, not a vendor ATS certification.
+    7) Set score_1_to_10 for overall recruiter-style fit (distinct from ATS score).
+    8) Fill keyword_alignment, content_alignment, ats_compatibility, suggestions (always include at least one ATS tip
+    when ats_readiness_score_0_to_100 is below 80), and formatted_report_markdown: a polished report with headings
+    "## Executive summary", "## Recruiter fit (1–10)", "## ATS readiness (0–100)", "## Evidence from metrics",
+    "## Recommendations", using bullet lists where helpful. Embed both numeric scores in the executive summary.
   expected_output: >
-    Structured evaluation.
+    ResumeEvaluation pydantic object with all fields populated, especially formatted_report_markdown and
+    ats_readiness_score_0_to_100.
   agent: evaluator_agent
   context:
     - tailor_resume_task

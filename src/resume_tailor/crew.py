@@ -12,6 +12,8 @@ from resume_tailor.models import (
     StructuredResumeContent,
 )
 from resume_tailor.tools.resume_tools import (
+    AtsResumeMetricsTool,
+    GetAtsGuidelinesTool,
     KeywordSimilarityTool,
     ReadTailoredResumeTextTool,
     ReadTextFileTool,
@@ -61,6 +63,8 @@ class ResumeTailorCrew:
                 ReadTailoredResumeTextTool(),
                 ReadTextFileTool(),
                 KeywordSimilarityTool(),
+                AtsResumeMetricsTool(),
+                GetAtsGuidelinesTool(),
             ],
             verbose=True,
         )
@@ -70,6 +74,7 @@ class ResumeTailorCrew:
         return Task(
             config=self.tasks_config["parse_resume_task"],
             output_pydantic=StructuredResumeContent,
+            async_execution=True,
         )
 
     @task
@@ -77,6 +82,7 @@ class ResumeTailorCrew:
         return Task(
             config=self.tasks_config["parse_job_description_task"],
             output_pydantic=JobDescriptionStructure,
+            async_execution=True,
         )
 
     @task

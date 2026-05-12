@@ -8,12 +8,35 @@ from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
 
 from resume_tailor.documents import (
+    compute_ats_metrics_json,
     loads_structured_resume_json,
     read_text_file_strict,
     render_structured_resume_pdf,
     simple_cosine_similarity,
     structured_resume_to_plain_text,
 )
+
+_ATS_GUIDELINES_PATH = Path(__file__).resolve().parent.parent / "knowledge" / "ats_guidelines.txt"
+
+
+class GetAtsGuidelinesInput(BaseModel):
+    """No parameters; tool returns bundled ATS guidance text."""
+
+    pass
+
+
+class GetAtsGuidelinesTool(BaseTool):
+    name: str = "get_ats_guidelines"
+    description: str = (
+        "Return bundled ATS-oriented resume best practices (formatting, keywords, submission). "
+        "Call once when evaluating; cite these principles in ats_compatibility and in formatted_report_markdown."
+    )
+    args_schema: Type[BaseModel] = GetAtsGuidelinesInput
+
+    def _run(self) -> str:
+        if not _ATS_GUIDELINES_PATH.is_file():
+            return "ERROR: ats_guidelines.txt missing from package."
+        return _ATS_GUIDELINES_PATH.read_text(encoding="utf-8")
 
 
 class ReadTextFileInput(BaseModel):
@@ -75,6 +98,23 @@ class ReadTailoredResumeTextTool(BaseTool):
         if not p.is_file():
             return f"ERROR: {p} not found"
         return p.read_text(encoding="utf-8", errors="replace")
+
+
+class AtsMetricsInput(BaseModel):
+    resume_text: str = Field(description="Full tailored resume plain text")
+    job_description_text: str = Field(description="Full job description plain text")
+
+
+class AtsResumeMetricsTool(BaseTool):
+    name: str = "compute_ats_resume_metrics"
+    description: str = (
+        "Deterministic ATS-oriented signals: JD token match rate in resume, ASCII ratio, "
+        "bullet markers, date-like tokens, whitespace layout hints. Returns JSON string."
+    )
+    args_schema: Type[BaseModel] = AtsMetricsInput
+
+    def _run(self, resume_text: str, job_description_text: str) -> str:
+        return compute_ats_metrics_json(resume_text, job_description_text)
 
 
 class KeywordSimilarityInput(BaseModel):

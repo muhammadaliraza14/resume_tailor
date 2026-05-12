@@ -1,0 +1,21 @@
+ATS-oriented resume guidance (general industry practices; each employer’s ATS differs).
+
+Formatting
+- Prefer simple, linear text: single column, no tables, minimal decorative symbols.
+- Avoid headers/footers and heavy graphics in source material where parsing matters.
+- Use standard fonts and readable sizes when producing documents (e.g. Arial/Calibri, 11pt+).
+- Some ATS parse pasted text poorly; file upload in the requested format is usually safer.
+
+Content and keywords
+- Mirror important phrases from the job description where truthful (tools, domains, regulations).
+- Work keywords into achievement bullets, not only a bare skills list.
+- Use consistent capitalization and clear date ranges (months/years where possible).
+- Prefer ASCII spellings in machine-readable text (e.g. "resume" not "résumé").
+- Spell out acronyms on first use when space allows, then abbreviations are fine.
+
+Length and structure
+- Two pages can be acceptable; keep later pages parseable with clear section continuity.
+- Certifications and in-progress credentials should be clearly labeled.
+
+Submission
+- Follow the employer’s requested file type; not every ATS handles PDF or DOCX equally well.

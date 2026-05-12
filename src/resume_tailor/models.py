@@ -93,8 +93,45 @@ class TailoringResult(BaseModel):
 
 
 class ResumeEvaluation(BaseModel):
-    score_1_to_10: int = Field(ge=1, le=10)
-    keyword_alignment: str
-    content_alignment: str
-    cosine_similarity_note: str = ""
-    suggestions: List[str] = Field(default_factory=list)
+    score_1_to_10: int = Field(
+        ge=1,
+        le=10,
+        description="Holistic recruiter-style fit vs the JD (not the same as ATS readiness).",
+    )
+    ats_readiness_score_0_to_100: int = Field(
+        ge=0,
+        le=100,
+        description=(
+            "Heuristic ATS-oriented score: combine compute_ats_resume_metrics signals, "
+            "cosine similarity, and ATS guideline checklist (formatting, keywords in context, ASCII, dates)."
+        ),
+    )
+    keyword_alignment: str = Field(
+        description="How well concrete JD terms appear in the tailored resume (in context, not keyword stuffing).",
+    )
+    content_alignment: str = Field(
+        description="How experience and summary map to responsibilities and qualifications.",
+    )
+    ats_compatibility: str = Field(
+        description=(
+            "ATS-oriented notes: simple layout, single-column plain text, standard section labels, "
+            "avoid accents/special symbols where possible, keyword placement, dates, file-format caveats."
+        ),
+    )
+    ats_metrics_interpretation: str = Field(
+        description="Short plain-language readout of the JSON from compute_ats_resume_metrics.",
+    )
+    cosine_similarity_note: str = Field(
+        default="",
+        description="Include the numeric value from compute_keyword_similarity (0–1).",
+    )
+    suggestions: List[str] = Field(
+        default_factory=list,
+        description="Concrete improvements; include ATS items when ats_readiness_score_0_to_100 < 75.",
+    )
+    formatted_report_markdown: str = Field(
+        description=(
+            "Polished Markdown for stakeholders: headings, bullet lists, include both scores with brief definitions, "
+            "sections for Keyword fit, Role fit, ATS compatibility (reference get_ats_guidelines), and Next steps."
+        ),
+    )

@@ -10,6 +10,55 @@ The template PDF (`resume_template.pdf`) is the **visual reference** (section or
 - `uv sync`
 - Copy [`.env.example`](.env.example) to `.env` and set `OPENAI_API_KEY`
 
+## Web application (FastAPI + React)
+
+Two processes in development: **API** (Python) and **UI** (Vite).
+
+**1. Backend** (from `resume_tailor/` project root, loads `.env`):
+
+```bash
+uv sync
+uv run resume_tailor_api
+# API: http://127.0.0.1:8765  — docs at http://127.0.0.1:8765/docs
+```
+
+**2. Frontend**:
+
+```bash
+cd web/frontend
+npm install
+npm run dev
+# UI: http://127.0.0.1:5173  (proxies /api → 8765; Tailwind via @tailwindcss/vite)
+```
+
+Upload **resume** and **job description** as `.txt`; optional **template** PDF. The API runs the same CrewAI pipeline in the background and stores each run under `output/web_jobs/<id>/`.
+
+**Production-style single server:** build the UI, then start the API; if `web/frontend/dist` exists, the API also serves the static SPA at `/`.
+
+```bash
+cd web/frontend && npm run build && cd ../..
+uv run resume_tailor_api
+# Open http://127.0.0.1:8765/
+```
+
+### Docker (production)
+
+From this project root (with `OPENAI_API_KEY` in `.env`):
+
+```bash
+cp .env.example .env   # compose expects a .env file; add OPENAI_API_KEY before `up`
+export DOCKER_BUILDKIT=1
+docker compose build
+docker compose up -d
+# UI + API: http://localhost:8765/  (job artifacts persisted in the named volume)
+```
+
+- Set `HOST` / `PORT` inside the container if you change the listen address (defaults `0.0.0.0:8765`).
+- Set `CORS_ORIGINS` to a comma-separated list when the browser origin is not localhost (or `*` for open dev-only use).
+- The API uses an **in-memory job registry**; the image runs **one uvicorn process**. Scale out only after replacing job state with Redis or similar.
+
+More detail: [web/README.md](web/README.md).
+
 ## Inputs (all plain text + template reference)
 
 | Input | Default path | Notes |

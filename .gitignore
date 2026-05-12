@@ -8,3 +8,6 @@ output/*.json
 output/*.txt
 !output/.gitkeep
 memory/
+output/web_jobs/
+web/frontend/node_modules/
+web/frontend/dist/

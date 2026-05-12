@@ -300,6 +300,69 @@ def simple_cosine_similarity(a: str, b: str) -> float:
     return dot / (na * nb)
 
 
+_ATS_STOP = frozenset(
+    """
+    the a an and or for to of in on at with by from as is are was were be been being
+    this that these those we you your our their they them it its will shall may can
+    must should could would about into over per via all any some not no yes if
+    than then so such both each few more most other too very just only own same
+    also including include etc eg ie
+    """.split()
+)
+
+
+def compute_ats_metrics(resume_text: str, job_description_text: str) -> dict:
+    """
+    Lightweight, deterministic signals for ATS-oriented discussion (not a certified ATS score).
+    """
+    r = resume_text or ""
+    j = job_description_text or ""
+    n = max(len(r), 1)
+    ascii_chars = sum(1 for c in r if ord(c) < 128)
+    ascii_ratio = ascii_chars / n
+    non_ascii = n - ascii_chars
+
+    jd_tokens = set(
+        t.lower()
+        for t in re.findall(r"\b[a-zA-Z][a-zA-Z0-9+#]{2,}\b", j)
+        if t.lower() not in _ATS_STOP
+    )
+    resume_l = r.lower()
+    matched = 0
+    for t in jd_tokens:
+        if re.search(r"\b" + re.escape(t) + r"\b", resume_l):
+            matched += 1
+    jd_n = max(len(jd_tokens), 1)
+    jd_token_match_rate = matched / jd_n
+
+    bullets = len(re.findall(r"(?m)^\s*[•\-\*]\s+", r))
+    date_hits = len(re.findall(r"\b(19|20)\d{2}\b", r)) + len(
+        re.findall(
+            r"\b(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\s+\d{4}\b",
+            r,
+            re.I,
+        )
+    )
+    multi_column_hint = bool(re.search(r"\t{3,}", r)) or bool(re.search(r"\s{4,}\S+\s{4,}", r))
+
+    return {
+        "jd_distinctive_token_count": len(jd_tokens),
+        "jd_tokens_matched_in_resume": matched,
+        "jd_token_match_rate": round(jd_token_match_rate, 4),
+        "ascii_ratio": round(ascii_ratio, 4),
+        "non_ascii_char_count": non_ascii,
+        "bullet_like_lines": bullets,
+        "year_or_month_date_signals": date_hits,
+        "possible_complex_whitespace_layout": multi_column_hint,
+        "resume_char_count": len(r),
+        "jd_char_count": len(j),
+    }
+
+
+def compute_ats_metrics_json(resume_text: str, job_description_text: str) -> str:
+    return json.dumps(compute_ats_metrics(resume_text, job_description_text), indent=2)
+
+
 def _loads_tailoring_payload(s: str):
     """Parse JSON from the LLM; repair common issues (raw newlines in strings, missing commas)."""
     raw = (s or "").strip()

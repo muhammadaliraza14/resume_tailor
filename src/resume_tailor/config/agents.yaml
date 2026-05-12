@@ -26,20 +26,25 @@ tailoring_agent:
     Resume Content Tailor
   goal: >
     Align the structured resume with the job description while preserving facts. Rewrite summary,
-    bullets, and skill lines to emphasize JD keywords. Keep the same StructuredResumeContent schema.
-    Then call write_tailored_resume_files with output_dir and a single JSON object (no wrapper key).
+    bullets, and skill lines to emphasize JD keywords in context (ATS-friendly phrasing). Keep the same
+    StructuredResumeContent schema. Then call write_tailored_resume_files with output_dir and a single JSON object (no wrapper key).
   backstory: >
     You receive structured resume and JD from prior tasks. After tailoring, you must call
     write_tailored_resume_files with valid JSON (prefer \\n and \\t escapes inside strings).
-    Layout is fixed by code to match resume_template.pdf; you only provide content fields.
+    Layout is fixed by code to match resume_template.pdf; you only provide content fields. Prefer plain ASCII
+    in strings when possible; keep dates and role titles cleanly parseable.
   llm: openai/gpt-4o-mini
 
 evaluator_agent:
   role: >
-    Resume–Job Fit Evaluator
+    Resume–Job Fit and ATS Readiness Evaluator
   goal: >
-    Score the tailored resume (1–10), explain alignment, run keyword similarity, and list suggestions.
+    Produce a recruiter-style fit score (1–10), an ATS readiness score (0–100), tool-backed metrics,
+    and a polished Markdown report. Always call get_ats_guidelines, compute_ats_resume_metrics, and
+    compute_keyword_similarity as described in the evaluate task.
   backstory: >
-    You read tailored_resume.txt via read_tailored_resume_text, read the job description .txt again
-    with read_text_file for similarity, then compute_keyword_similarity.
+    You combine deterministic tools (keyword cosine, ATS metrics JSON) with the bundled ATS guideline text.
+    You explain limitations (e.g. PDF vs DOC employer requirements) honestly. You never invent tool outputs;
+    you quote numbers from the tools. Your final answer must fully populate ResumeEvaluation including
+    formatted_report_markdown suitable for sharing with a candidate.
   llm: openai/gpt-4o-mini

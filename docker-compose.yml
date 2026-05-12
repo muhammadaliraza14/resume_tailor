@@ -1,0 +1,32 @@
+services:
+  resume-tailor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: resume-tailor:latest
+    ports:
+      - "${HOST_PORT:-8765}:8765"
+    env_file:
+      - .env
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "8765"
+      RESUME_TAILOR_PROJECT_ROOT: "/app"
+    volumes:
+      - resume_tailor_output:/app/output
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8765/api/health', timeout=5)",
+        ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 180s
+
+volumes:
+  resume_tailor_output:
