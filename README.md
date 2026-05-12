@@ -69,6 +69,8 @@ More detail: [web/README.md](web/README.md).
 
 Environment variables: `RESUME_TEXT_PATH` (or legacy `RESUME_PATH`), `JOB_DESCRIPTION_TEXT_PATH` (or `JOB_DESCRIPTION_PATH`), `TEMPLATE_PDF_PATH`, `OUTPUT_DIR`.
 
+**Score targets (CLI + API):** the full crew is re-run until recruiter fit **≥ `MIN_RECRUITER_SCORE`** (default **8**) and ATS readiness **≥ `MIN_ATS_SCORE`** (default **80**), or **`MAX_CREW_SCORE_ROUNDS`** full passes (default **6**). See [`.env.example`](.env.example).
+
 ## Run
 
 From the project root:

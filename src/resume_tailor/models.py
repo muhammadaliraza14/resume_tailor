@@ -127,7 +127,7 @@ class ResumeEvaluation(BaseModel):
     )
     suggestions: List[str] = Field(
         default_factory=list,
-        description="Concrete improvements; include ATS items when ats_readiness_score_0_to_100 < 75.",
+        description="Concrete improvements; include ATS items while ats_readiness_score_0_to_100 is below target.",
     )
     formatted_report_markdown: str = Field(
         description=(

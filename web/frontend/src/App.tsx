@@ -20,6 +20,8 @@ type Job = {
   result_preview?: string;
   score_1_to_10?: number;
   ats_readiness_score_0_to_100?: number;
+  refinement_rounds_used?: number;
+  score_targets_met?: boolean;
   downloads?: Downloads;
 };
 
@@ -272,6 +274,8 @@ export default function App() {
                   <p className="mt-1 text-xs text-slate-500">
                     Recruiter fit is a holistic 1–10 rating. ATS readiness is a heuristic 0–100 score from
                     keyword overlap, plain-text signals, and ATS best-practice checklist (see evaluation download).
+                    The crew may re-run up to several full passes until both meet configured minimums (defaults 8
+                    and 80); see refinement rounds and target met below when present.
                   </p>
                   <dl className="mt-3 grid grid-cols-1 gap-3 sm:grid-cols-2">
                     {job.score_1_to_10 != null && (
@@ -293,6 +297,18 @@ export default function App() {
                       </div>
                     )}
                   </dl>
+                  {(job.refinement_rounds_used != null || job.score_targets_met != null) && (
+                    <p className="mt-3 text-xs text-slate-600">
+                      {job.refinement_rounds_used != null && (
+                        <span className="mr-3">Full crew runs: {job.refinement_rounds_used}</span>
+                      )}
+                      {job.score_targets_met != null && (
+                        <span>
+                          Targets met (≥8 recruiter, ≥80 ATS): {job.score_targets_met ? "yes" : "no"}
+                        </span>
+                      )}
+                    </p>
+                  )}
                 </div>
               )}
 

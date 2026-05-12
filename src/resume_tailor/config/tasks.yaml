@@ -26,6 +26,13 @@ tailor_resume_task:
     in visible text, keep bullets clear and dated experience ranges explicit, and avoid decorative symbols
     in bullet text. Note: the pipeline still emits a layout PDF for humans; mention in tailoring_summary
     if the user should also keep a .doc/.docx plain export for employers that require it.
+    Refinement context: refinement_round is "{refinement_round}". If refinement_round is not "0", read
+    prior_evaluation_feedback below and materially improve the resume so the next evaluation can honestly
+    reach at least score_1_to_10 {min_recruiter_score}/10 and ats_readiness_score_0_to_100 {min_ats_score}/100
+    without inventing employers, dates, degrees, or tools the candidate did not have. Address gaps and
+    suggestions from the prior pass explicitly.
+    prior_evaluation_feedback:
+    {prior_evaluation_feedback}
     Call write_tailored_resume_files with output_dir "{output_dir}" and tailored_resume_json set to
     the full JSON object (all StructuredResumeContent fields). Use \\n inside strings instead of raw newlines.
   expected_output: >
@@ -38,7 +45,10 @@ tailor_resume_task:
 
 evaluate_resume_task:
   description: >
-    Evaluate output in "{output_dir}".
+    Evaluate output in "{output_dir}". This run is refinement_round "{refinement_round}".
+    Pipeline bar: recruiter fit (score_1_to_10) should reach at least {min_recruiter_score}/10 and
+    ATS readiness (ats_readiness_score_0_to_100) at least {min_ats_score}/100 when the resume objectively
+    meets those bars; score honestly from tools and content—never fabricate tool numbers.
     1) Call get_ats_guidelines (no arguments) and use it as the rubric for ATS commentary.
     2) Call read_tailored_resume_text with "{output_dir}" for the tailored plain text.
     3) Call read_text_file on "{job_description_text_path}" for raw JD text.
@@ -48,10 +58,11 @@ evaluate_resume_task:
     ASCII cleanliness, presence of date-like tokens, reasonable bullet structure, and how well the resume follows
     get_ats_guidelines (keywords in context, simple linear text, etc.). This is a heuristic, not a vendor ATS certification.
     7) Set score_1_to_10 for overall recruiter-style fit (distinct from ATS score).
-    8) Fill keyword_alignment, content_alignment, ats_compatibility, suggestions (always include at least one ATS tip
-    when ats_readiness_score_0_to_100 is below 80), and formatted_report_markdown: a polished report with headings
+    8) Fill keyword_alignment, content_alignment, ats_compatibility, suggestions (include ATS tips while
+    ats_readiness_score_0_to_100 is below {min_ats_score}), and formatted_report_markdown: a polished report with headings
     "## Executive summary", "## Recruiter fit (1–10)", "## ATS readiness (0–100)", "## Evidence from metrics",
-    "## Recommendations", using bullet lists where helpful. Embed both numeric scores in the executive summary.
+    "## Recommendations", using bullet lists where helpful. Embed both numeric scores in the executive summary and
+    state clearly whether each score meets the pipeline minimums ({min_recruiter_score} and {min_ats_score}).
   expected_output: >
     ResumeEvaluation pydantic object with all fields populated, especially formatted_report_markdown and
     ats_readiness_score_0_to_100.

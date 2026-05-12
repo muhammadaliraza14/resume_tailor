@@ -14,6 +14,7 @@ from fastapi import BackgroundTasks, FastAPI, File, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 
+from resume_tailor.crew_scores import extract_evaluation_scores
 from resume_tailor.main import kickoff_crew
 from resume_tailor.paths import project_root as _project_root
 
@@ -40,6 +41,8 @@ class JobRecord:
     result_preview: Optional[str] = None
     score_1_to_10: Optional[int] = None
     ats_readiness_score_0_to_100: Optional[int] = None
+    refinement_rounds_used: Optional[int] = None
+    score_targets_met: Optional[bool] = None
 
     def to_dict(self) -> Dict[str, Any]:
         d: Dict[str, Any] = {
@@ -61,6 +64,10 @@ class JobRecord:
             d["score_1_to_10"] = self.score_1_to_10
         if self.ats_readiness_score_0_to_100 is not None:
             d["ats_readiness_score_0_to_100"] = self.ats_readiness_score_0_to_100
+        if self.refinement_rounds_used is not None:
+            d["refinement_rounds_used"] = self.refinement_rounds_used
+        if self.score_targets_met is not None:
+            d["score_targets_met"] = self.score_targets_met
         if self.status == JobStatus.completed and self.output_dir:
             base = f"/api/jobs/{self.id}/files"
             d["downloads"] = {
@@ -106,18 +113,6 @@ def _cors_config() -> tuple[list[str], bool]:
     ], True
 
 
-def _extract_evaluation_scores(result: Any) -> tuple[Optional[int], Optional[int]]:
-    """Read recruiter + ATS scores from CrewOutput or the last task with a ResumeEvaluation pydantic model."""
-    pyd = getattr(result, "pydantic", None)
-    if pyd is not None and hasattr(pyd, "ats_readiness_score_0_to_100"):
-        return getattr(pyd, "score_1_to_10", None), getattr(pyd, "ats_readiness_score_0_to_100", None)
-    for out in reversed(getattr(result, "tasks_output", None) or []):
-        tp = getattr(out, "pydantic", None)
-        if tp is not None and hasattr(tp, "ats_readiness_score_0_to_100"):
-            return getattr(tp, "score_1_to_10", None), getattr(tp, "ats_readiness_score_0_to_100", None)
-    return None, None
-
-
 def _execute_job(job_id: str) -> None:
     with _lock:
         rec = _jobs.get(job_id)
@@ -131,14 +126,15 @@ def _execute_job(job_id: str) -> None:
         out_dir = rec.output_dir or ""
 
     try:
-        result = kickoff_crew(
+        outcome = kickoff_crew(
             resume_text_path=resume_path,
             job_description_text_path=jd_path,
             template_pdf_path=template_path,
             output_dir=out_dir,
         )
+        result = outcome.result
         preview = str(getattr(result, "raw", result))
-        fit_score, ats_score = _extract_evaluation_scores(result)
+        fit_score, ats_score = extract_evaluation_scores(result)
         with _lock:
             r = _jobs.get(job_id)
             if r:
@@ -147,6 +143,8 @@ def _execute_job(job_id: str) -> None:
                 r.result_preview = preview
                 r.score_1_to_10 = fit_score
                 r.ats_readiness_score_0_to_100 = ats_score
+                r.refinement_rounds_used = outcome.rounds_run
+                r.score_targets_met = outcome.score_targets_met
     except Exception as e:  # noqa: BLE001
         tb = traceback.format_exc()
         with _lock:

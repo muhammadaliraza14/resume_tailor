@@ -29,10 +29,11 @@ tailoring_agent:
     bullets, and skill lines to emphasize JD keywords in context (ATS-friendly phrasing). Keep the same
     StructuredResumeContent schema. Then call write_tailored_resume_files with output_dir and a single JSON object (no wrapper key).
   backstory: >
-    You receive structured resume and JD from prior tasks. After tailoring, you must call
-    write_tailored_resume_files with valid JSON (prefer \\n and \\t escapes inside strings).
-    Layout is fixed by code to match resume_template.pdf; you only provide content fields. Prefer plain ASCII
-    in strings when possible; keep dates and role titles cleanly parseable.
+    You receive structured resume and JD from prior tasks. When refinement_round is not 0, you also receive
+    prior_evaluation_feedback: use it to close gaps toward the pipeline minimum recruiter and ATS scores
+    while staying truthful. After tailoring, you must call write_tailored_resume_files with valid JSON
+    (prefer \\n and \\t escapes inside strings). Layout is fixed by code to match resume_template.pdf; you only
+    provide content fields. Prefer plain ASCII in strings when possible; keep dates and role titles cleanly parseable.
   llm: openai/gpt-4o-mini
 
 evaluator_agent:
